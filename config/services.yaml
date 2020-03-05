@@ -20,6 +20,7 @@ services:
         bind:
             $markdownLogger: '@monolog.logger.markdown'
             $isDebug: '%kernel.debug%'
+            $uploadsPath: '%kernel.project_dir%/public/uploads' # This means anywhere that $uploadsPath is used as an argument for a method that is autowired, usually a controller action or the constructor of a service, pass in this value
 
     # custom aliases for autowiring
     Nexy\Slack\Client: '@nexy_slack.client'
@@ -43,3 +44,5 @@ services:
         tags:
             - { name: form.type_extension,
                 extended_type: Symfony\Component\Form\Extension\Core\Type\TextareaType }
+    #Creating a service alias for the RequestStackContext service. This makes this service class autowirable
+    Symfony\Component\Asset\Context\RequestStackContext: '@assets.context'

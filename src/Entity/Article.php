@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CommentRepository;
+use App\Service\UploaderHelper;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
@@ -53,6 +54,7 @@ class Article
      */
     private $heartCount = 0;
 
+    // Since in the database we only store the filename, the property that the filename will get saved to is set to type=string
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -184,7 +186,7 @@ class Article
 
     public function getImagePath()
     {
-        return 'images/'.$this->getImageFilename();
+        return UploaderHelper::ARTICLE_IMAGE.'/'.$this->getImageFilename(); // Changing this code to use the constant variable that we defined in the uploader helper class
     }
 
     /**

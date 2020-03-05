@@ -9,12 +9,15 @@ use App\Repository\UserRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Image;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 class ArticleFormType extends AbstractType
 {
@@ -28,8 +31,8 @@ class ArticleFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         /** @var Article|null $article */
-        $article = $options['data'] ?? null;
-        $isEdit = $article && $article->getId();
+        $article = $options['data'] ?? null; // Using the data option to get the article object that this form is bound to. If this is a new form, there may or may not be an article object so it will either be an article object or null
+        $isEdit = $article && $article->getId(); // We use the article object to create an isEdit variable to figure out if the form is being loaded via the edit page or the new page
 
         $builder
             ->add('title', TextType::class, [
@@ -49,6 +52,25 @@ class ArticleFormType extends AbstractType
                     'Interstellar Space' => 'interstellar_space'
                 ],
                 'required' => false,
+            ]);
+
+        $imageConstrains = [
+            new Image([ // This validation only allows for typical image files to be uploaded. e.g. jpeg, png, gif etc.
+                'maxSize' => '5M' // Using one of the options that come with this constraint to set a max size of an image.
+            ])
+        ];
+
+        if (!$isEdit || !$article->getImageFilename()) { // if this is not the edit page or if the article doesn't have an image filename
+            $imageConstrains[] = new NotNull([ // Then add a new item to the $imageConstraints array
+                'message' => 'Please upload an image'
+            ]);
+        }
+
+        $builder
+            ->add('imageFile', FileType::class, [
+                'mapped' => false,
+                'required' => false,
+                'constraints' => $imageConstrains // Adding validation directly to the form because this field is not mapped to a property. If this was mapped, it would go as an annotation above the property it was mapped to
             ])
         ;
 

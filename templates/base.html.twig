@@ -86,6 +86,12 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
             <script>
                 $('.dropdown-toggle').dropdown();
+                $('.custom-file-input').on('change', function(event) {  {# Targeting the feild inputs class, when the value of this class changes, it calls the callback function which has an event argument #}
+                    var inputFile = event.currentTarget; {# This is targeting the input feild type element and setting it to a inputFile variable #}
+                    $(inputFile).parent() {# Using that variable to find the HTML class that we want and passing it the file that was just selected so that it appears in the label #}
+                    .find('.custom-file-label')
+                    .html(inputFile.files[0].name);
+                });
             </script>
         {% endblock %}
     </body>
