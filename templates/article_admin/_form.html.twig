@@ -2,13 +2,25 @@
     {{ form_row(articleForm.title, {
         label: 'Article title'
     }) }}
-        {# passing the second form_row argument which is an array of variables which we can use to customize many things
-         One of the most important ones is 'attr' which allows us to attach our own HTML attributes to the input feild #}
-    {{ form_row(articleForm.imageFile, {
-        attr: {
-            placeholder: 'Select an article image'
-        }
-    }) }}
+
+    <div class="row">
+        <div class="col-sm-9">
+            {# passing the second form_row argument which is an array of variables which we can use to customize many things
+            One of the most important ones is 'attr' which allows us to attach our own HTML attributes to the input feild #}
+            {{ form_row(articleForm.imageFile, {
+                attr: {
+                    placeholder: 'Select an article image'
+                }
+            }) }}
+        </div>
+        <div class="col-sm-3"> {# This is where we will render the image on this page if there is one#}
+            {% if articleForm.vars.data.imageFilename|default %} {# This will be the article object that we need, along with the image file name property attachted #}
+                <img src="{{ uploaded_asset(articleForm.vars.data.imagePath)|imagine_filter('squared_thumbnail_small') }}" height="100"> {# if the value of that object property is set then use it in this img tag. #}
+            {% endif %}
+        </div>
+    </div>
+
+
     {{ form_row(articleForm.author) }}
     {{ form_row(articleForm.location, {
         attr: {
