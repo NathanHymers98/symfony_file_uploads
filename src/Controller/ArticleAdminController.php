@@ -34,7 +34,7 @@ class ArticleAdminController extends BaseController
             $uploadedFile = $form['imageFile']->getData();
 
             if ($uploadedFile) {
-                $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile);
+                $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile, $article->getImageFilename());
                 $article->setImageFilename($newFilename);
 
             }
@@ -68,7 +68,7 @@ class ArticleAdminController extends BaseController
             $uploadedFile = $form['imageFile']->getData(); // This gets the unmapped fields data from the form so that we can still use it once the form has been submitted
 
             if ($uploadedFile) { // If the $uploadFile variable is set, then execute the code below. Otherwise just skip it,
-               $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile); // Using the UploaderHelper service object to set the destination and the normalized name of the uploadedFile we get from the form
+               $newFilename = $uploaderHelper->uploadArticleImage($uploadedFile, $article->getImageFilename()); // Using the UploaderHelper service object to set the destination and the normalized name of the uploadedFile we get from the form
                 $article->setImageFilename($newFilename); // Using the setImageFilename() method and passing it the normalized filename (which is now a string) which we created above using the filename that was submitted in the form
                                                             // and storing it to the imageFilename property in the Article entity class
             }
@@ -84,7 +84,8 @@ class ArticleAdminController extends BaseController
         }
 
         return $this->render('article_admin/edit.html.twig', [
-            'articleForm' => $form->createView()
+            'articleForm' => $form->createView(),
+            'article' => $article,
         ]);
     }
 

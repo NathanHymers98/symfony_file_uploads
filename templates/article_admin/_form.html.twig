@@ -15,7 +15,9 @@
         </div>
         <div class="col-sm-3"> {# This is where we will render the image on this page if there is one#}
             {% if articleForm.vars.data.imageFilename|default %} {# This will be the article object that we need, along with the image file name property attachted #}
-                <img src="{{ uploaded_asset(articleForm.vars.data.imagePath)|imagine_filter('squared_thumbnail_small') }}" height="100"> {# if the value of that object property is set then use it in this img tag. #}
+                <a href="{{ uploaded_asset(articleForm.vars.data.imagePath) }}" target="blank">
+                    <img src="{{ articleForm.vars.data.imagePath|imagine_filter('squared_thumbnail_small') }}" height="100"> {# if the value of that object property is set then use it in this img tag. #}
+                </a>
             {% endif %}
         </div>
     </div>

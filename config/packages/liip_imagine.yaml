@@ -1,7 +1,29 @@
 liip_imagine:
     #    # valid drivers options include "gd" or "gmagick" or "imagick"
     #    driver: "gd"
-    #
+
+    # The loaders are using for reading the original image
+    loaders:
+        # This creates a loader called 'flysystem_loader'
+        flysystem_loader:
+            # Below is the key part. This says to use the flysystem loader that comes with the bundle
+            flysystem:
+                filesystem_service: oneup_flysystem.public_uploads_filesystem_filesystem
+
+    # default loader to use for all filter sets
+    data_loader: flysystem_loader
+
+    # The resolver is responsible for saving the thumbnail image back to the filesystem after all of the transformations
+    resolvers:
+        flysystem_resolver:
+            flysystem:
+                filesystem_service: oneup_flysystem.public_uploads_filesystem_filesystem
+                root_url:           '%uploads_base_url%'
+                cache_prefix:       media/cache
+
+    # This tells the bundle to always use this resolver
+    cache: flysystem_resolver
+
     #    # define your filter sets under this option
     filter_sets:
         # Using this package to create filters that will allow me to change the size of the images on the website so that they are a more reasonable size

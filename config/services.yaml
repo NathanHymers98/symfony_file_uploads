@@ -6,6 +6,8 @@
 parameters:
     cache_adapter: cache.adapter.apcu
     locale: 'en'
+    uploads_dir_name: 'uploads' # This is the name of the directory we are storing uploaded files
+    uploads_base_url: '%env(SITE_BASE_URL)%/%uploads_dir_name%' # This represents the base URL to the uploaded assets
 
 services:
     # default configuration for services in *this* file
@@ -20,7 +22,9 @@ services:
         bind:
             $markdownLogger: '@monolog.logger.markdown'
             $isDebug: '%kernel.debug%'
-            $uploadsPath: '%kernel.project_dir%/public/uploads' # This means anywhere that $uploadsPath is used as an argument for a method that is autowired, usually a controller action or the constructor of a service, pass in this value
+            $publicUploadFilesystem: '@oneup_flysystem.public_uploads_filesystem_filesystem' # This means anywhere that $publicUploadFileSystem is used as an argument for a method that is autowired, usually a controller action or the constructor of a service, pass in this value
+            $privateUploadFilesystem: '@oneup_flysystem.private_uploads_filesystem_filesystem'
+            $uploadedAssetsBaseUrl: '%uploads_base_url%'
 
     # custom aliases for autowiring
     Nexy\Slack\Client: '@nexy_slack.client'

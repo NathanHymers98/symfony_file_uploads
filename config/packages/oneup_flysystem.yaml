@@ -1,0 +1,17 @@
+# Read the documentation: https://github.com/1up-lab/OneupFlysystemBundle/tree/master/Resources/doc/index.md
+oneup_flysystem:
+    adapters:
+        # This is the public filesystem
+        public_uploads_adapter:
+            local:
+                directory: '%kernel.project_dir%/public/%uploads_dir_name%'
+        # This is the private file system
+        private_uploads_adapter:
+            local:
+                directory: '%kernel.project_dir%/var/uploads'
+    # When we configure a filesystem here, it creates a service
+    filesystems:
+        public_uploads_filesystem:
+            adapter: public_uploads_adapter
+        private_uploads_filesystem:
+            adapter: private_uploads_adapter
