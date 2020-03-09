@@ -62,7 +62,7 @@ class UploaderHelper // This class will handle all things related to uploading f
 
     public function uploadArticleReference(File $file): string // This reference file is being saved to a private directory, which is why the arguments in uploadFile are different compared to when we are uploading an image which we want to be public
     {
-        $this->uploadFile($file, self::ARTICLE_REFERENCE, false); // The last argument 'false' means that it will use the private file system defined in the uploadFile method
+        return $this->uploadFile($file, self::ARTICLE_REFERENCE, false); // The last argument 'false' means that it will use the private file system defined in the uploadFile method
     }
 
 
@@ -73,6 +73,33 @@ class UploaderHelper // This class will handle all things related to uploading f
             ->getBasePath().$this->uploadedAssetsBaseUrl.'/'.$path; // if our app lives at the route of the domain, like it does now, getBaseUrl() will just return an empty string
                                                 // but if it lives in a sub-directory, like 'the_spacebar' it will return '/the_spacebar' so the images on the show page will still display.
 
+    }
+
+    /**
+     * @return resource
+     */
+    public function readStream(string $path, bool $isPublic) // Passing the isPublic argument so that we know which filesystem to read from
+    {
+        $filesystem = $isPublic ? $this->filesystem : $this->privateFilesystem; // Getting the correct file system, if $isPbulic is set to true, then it will use the public system and if not it will use the private system
+
+        $resource =  $filesystem->readStream($path);
+
+        if ($resource === false) { // If nothing is passed to this method, flysystem will return false. So we need to check if the $resource object is exactly equal to false, and if it is show a more helpful exception message
+            throw new \Exception(sprintf('Error opening stream for "%s"', $path));
+        }
+
+        return $resource;
+    }
+
+    public function deleteFile(string $path, bool $isPublic)
+    {
+        $filesystem = $isPublic ? $this->filesystem : $this->privateFilesystem;
+
+        $result = $filesystem->delete($path);
+
+        if ($result === false) {
+            throw new \Exception(sprintf('Error deleting "%s"', $path));
+        }
     }
 
     private function uploadFile(File $file, string $directory, bool $isPublic): string

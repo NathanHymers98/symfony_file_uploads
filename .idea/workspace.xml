@@ -2,25 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcc5160e-9115-4c95-b3b1-88478f4b8937" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Controller/ArticleReferenceAdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/symfony_file_uploads.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony_file_uploads.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/liip_imagine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/liip_imagine.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ArticleAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ArticleAdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/ArticleFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/ArticleFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Article.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin_article_form.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin_article_form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ArticleReferenceAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ArticleReferenceAdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/ArticleReference.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/ArticleReference.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/UploaderHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/UploaderHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/article/homepage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/homepage.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/article/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/article_admin/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article_admin/_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/article_admin/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article_admin/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +186,8 @@
       <option name="presentableId" value="Default" />
       <updated>1583403543727</updated>
       <workItem from="1583403545598" duration="13230000" />
-      <workItem from="1583478104353" duration="20732000" />
+      <workItem from="1583478104353" duration="20917000" />
+      <workItem from="1583737172920" duration="10351000" />
     </task>
     <servers />
   </component>
@@ -210,10 +199,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="1017" y="520" key="#com.intellij.fileTypes.FileTypeChooser/2560.0.3008.1692/0.0.2560.1440@0.0.2560.1440" timestamp="1583406336923" />
-    <state x="1018" y="482" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583411934535">
+    <state x="1018" y="482" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583742254380">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="1018" y="482" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/2560.0.3008.1692/0.0.2560.1440@0.0.2560.1440" timestamp="1583411934535" />
+    <state x="1018" y="482" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/2560.0.3008.1692/0.0.2560.1440@0.0.2560.1440" timestamp="1583742254380" />
     <state x="946" y="527" key="NewPhpClassDialog" timestamp="1583499975703">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
@@ -222,10 +211,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="781" y="359" key="SettingsEditor/2560.0.3008.1692/0.0.2560.1440@0.0.2560.1440" timestamp="1583492772935" />
-    <state x="940" y="552" key="com.intellij.ide.util.TipDialog" timestamp="1583478105289">
+    <state x="940" y="552" key="com.intellij.ide.util.TipDialog" timestamp="1583737173898">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="940" y="552" key="com.intellij.ide.util.TipDialog/2560.0.3008.1692/0.0.2560.1440@0.0.2560.1440" timestamp="1583478105289" />
+    <state x="940" y="552" key="com.intellij.ide.util.TipDialog/2560.0.3008.1692/0.0.2560.1440@0.0.2560.1440" timestamp="1583737173898" />
     <state x="945" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1583479919426">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
